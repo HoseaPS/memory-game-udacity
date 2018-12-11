@@ -77,7 +77,7 @@ function shuffle(array) {
 openedCards = [];
 
 function checkCard() {
-  if (startGame == false) {
+  if (startGame === false) {
     startGame = true;
     timer.start();
   }
@@ -98,7 +98,7 @@ function checkCard() {
     openedCards.push($(this));
     setTimeout(function() {
       if (
-        openedCards[0][0].firstChild.className ==
+        openedCards[0][0].firstChild.className ===
         openedCards[1][0].firstChild.className
       ) {
         openedCards[0].addClass("match").animateCss("shake");
@@ -109,7 +109,7 @@ function checkCard() {
         openedCards = [];
         setTimeout(function() {
           match += 1;
-          if (match == 8) {
+          if (match === 8) {
             showResults();
           }
         }, 250);
@@ -155,13 +155,13 @@ function updateMoves() {
   moves += 1;
   $(".moves").html(`${moves} ${moves > 1 ? "Movimentos" : "Movimento"}`);
   //caso faça mais de 16 movimentos, irá perder mais uma estrela
-  if (moves == 24) {
+  if (moves === 24) {
     $(".stars")
       .children()[0]
       .remove();
     $(".stars").append('<li><i class="fa fa-star-o"></i></li>');
     //caso faça mais de 16 movimentos, irá perder uma estrela
-  } else if (moves == 16) {
+  } else if (moves === 16) {
     $(".stars")
       .children()[0]
       .remove();
@@ -203,12 +203,12 @@ function showResults() {
              </div>
              <div class="star">
                 <i class="fa ${
-                  moves > 23 ? "fa-star-o" : "fa-star"
+                  moves > 24 ? "fa-star-o" : "fa-star"
                 }  fa-3x"></i>    
              </div>
             <div class="star">
                 <i class="fa ${
-                  moves > 14 ? "fa-star-o" : "fa-star"
+                  moves > 16 ? "fa-star-o" : "fa-star"
                 } fa-3x"></i>    
              </div>
         </div>
